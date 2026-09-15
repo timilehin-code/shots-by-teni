@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <rect width="1200" height="675" fill="#0B0A13"/>
+  <circle cx="940" cy="120" r="315" fill="#3E63FF" opacity="0.9"/>
+  <circle cx="1010" cy="555" r="250" fill="#FF4FA3" opacity="0.8"/>
+  <text x="80" y="285" fill="#F3F0FA" font-family="Arial, sans-serif" font-size="118" font-weight="700">shots</text>
+  <text x="80" y="405" fill="#F3F0FA" font-family="Arial, sans-serif" font-size="118" font-weight="700">by teni</text>
+  <text x="85" y="515" fill="#F3F0FA" opacity="0.7" font-family="Arial, sans-serif" font-size="25">MOBILE EVENT VIDEOGRAPHY</text>
+</svg>
