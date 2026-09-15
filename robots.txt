@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://shotsbyteni.com/sitemap.xml
+Sitemap: https://shots-by-teni.vercel.app/sitemap.xml
