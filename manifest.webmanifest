@@ -1,0 +1,10 @@
+{
+  "name": "Shots by Teni",
+  "short_name": "Shots by Teni",
+  "description": "Mobile event videography for the moments you want to feel twice.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B0A13",
+  "theme_color": "#0B0A13",
+  "icons": []
+}
