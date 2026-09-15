@@ -187,11 +187,12 @@
         id="work"
         aria-labelledby="work-title"
       >
+        <div class="work-spotlight" aria-hidden="true"></div>
         <div class="work-top">
           <div class="section-kicker">
             <span>04</span><span>Selected work</span>
           </div>
-          <p>Drag the reel / click a frame</p>
+          <p class="reel-hint">Drag the reel / click a frame</p>
         </div>
         <div class="work-heading">
           <h2 id="work-title">A few things<br />I've <em>seen.</em></h2>
@@ -204,7 +205,7 @@
           aria-label="Selected event films. Drag or use arrow keys to browse"
         >
           <article
-            class="film-card"
+            class="film-card is-loading"
             tabindex="0"
             role="group"
             data-video="assets/videos/IMG_2321.mp4"
@@ -212,7 +213,7 @@
             data-context="Celebration"
           >
             <span class="film-number">01</span
-            ><video muted loop playsinline preload="metadata">
+            ><video muted loop playsinline preload="none">
               <source
                 src="assets/videos/IMG_2321.mp4"
                 type="video/mp4"
@@ -228,7 +229,7 @@
             </button>
           </article>
           <article
-            class="film-card film-card--tall"
+            class="film-card film-card--tall is-loading"
             tabindex="0"
             role="group"
             data-video="assets/videos/IMG_3844.mp4"
@@ -236,7 +237,7 @@
             data-context="Love story / 2024"
           >
             <span class="film-number">02</span
-            ><video muted loop playsinline preload="metadata">
+            ><video muted loop playsinline preload="none">
               <source
                 src="assets/videos/IMG_3844.mp4"
                 type="video/mp4"
@@ -252,7 +253,7 @@
             </button>
           </article>
           <article
-            class="film-card"
+            class="film-card is-loading"
             tabindex="0"
             role="group"
             data-video="assets/videos/IMG_3918.mp4"
@@ -260,7 +261,7 @@
             data-context="wedding"
           >
             <span class="film-number">03</span
-            ><video muted loop playsinline preload="metadata">
+            ><video muted loop playsinline preload="none">
               <source
                 src="assets/videos/IMG_3918.mp4"
                 type="video/mp4"
@@ -276,7 +277,7 @@
             </button>
           </article>
           <article
-            class="film-card film-card--tall"
+            class="film-card film-card--tall is-loading"
             tabindex="0"
             role="group"
             data-video="assets/videos/IMG_8083.mp4"
@@ -284,7 +285,7 @@
             data-context="tradtional wedding"
           >
             <span class="film-number">04</span
-            ><video muted loop playsinline preload="metadata">
+            ><video muted loop playsinline preload="none">
               <source
                 src="assets/videos/IMG_8083.mp4"
                 type="video/mp4"
@@ -300,7 +301,7 @@
             </button>
           </article>
           <article
-            class="film-card"
+            class="film-card is-loading"
             tabindex="0"
             role="group"
             data-video="assets/videos/IMG_8084.mp4"
@@ -308,7 +309,7 @@
             data-context="funeral"
           >
             <span class="film-number">05</span
-            ><video muted loop playsinline preload="metadata">
+            ><video muted loop playsinline preload="none">
               <source
                 src="assets/videos/IMG_8084.mp4"
                 type="video/mp4"
@@ -324,7 +325,7 @@
             </button>
           </article>
           <article
-            class="film-card film-card--tall"
+            class="film-card film-card--tall is-loading"
             tabindex="0"
             role="group"
             data-video="assets/videos/IMG_8085.mp4"
@@ -332,7 +333,7 @@
             data-context="Event film "
           >
             <span class="film-number">06</span
-            ><video muted loop playsinline preload="metadata">
+            ><video muted loop playsinline preload="none">
               <source
                 src="assets/videos/IMG_8085.mp4"
                 type="video/mp4"
@@ -459,6 +460,7 @@
         <div class="modal-video-wrap">
           <video class="modal-video" controls playsinline></video>
         </div>
+        <div class="modal-progress" aria-hidden="true"><span></span></div>
         <div class="modal-meta">
           <span class="modal-context"></span>
           <h2 id="modal-title"></h2>

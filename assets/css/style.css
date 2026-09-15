@@ -26,6 +26,7 @@ body {
   font-family: var(--body);
   overflow-x: clip;
   width: 100%;
+  transition: background-color 0.8s ease;
 }
 body.modal-open {
   overflow: hidden;
@@ -45,6 +46,12 @@ button {
   pointer-events: none;
   opacity: 0.035;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+  animation: noise-drift 0.2s steps(2) infinite;
+}
+@keyframes noise-drift {
+  0% { background-position: 0 0; }
+  50% { background-position: 12px -8px; }
+  100% { background-position: -8px 10px; }
 }
 .site-header {
   align-items: center;
@@ -417,7 +424,30 @@ h2 em {
   font-size: 22px;
 }
 .work {
+  isolation: isolate;
   overflow: hidden;
+  position: relative;
+}
+.work > *:not(.work-spotlight) {
+  position: relative;
+  z-index: 1;
+}
+.work-spotlight {
+  background: radial-gradient(circle, rgba(62, 99, 255, 0.2), rgba(255, 79, 163, 0.08) 28%, transparent 68%);
+  border-radius: 50%;
+  height: 420px;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.4s ease;
+  width: 420px;
+  z-index: 0;
+}
+.work.is-pointer-active .work-spotlight {
+  opacity: 1;
 }
 .work-top,
 .work-heading {
@@ -466,6 +496,13 @@ h2 em {
   padding: 0;
   position: relative;
   text-align: left;
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.film-card.is-in-view {
+  opacity: 1;
+  transform: translateY(0);
 }
 .film-card--tall {
   height: min(50vw, 590px);
@@ -482,10 +519,39 @@ h2 em {
     transform 0.8s;
   width: 100%;
 }
+.film-card.is-loading video {
+  filter: blur(16px) saturate(0.7);
+  opacity: 0.52;
+  transform: scale(1.06);
+}
+.film-card.is-loading::before {
+  animation: film-loader-spin 0.9s linear infinite;
+  border: 2px solid rgba(243, 240, 250, 0.25);
+  border-radius: 50%;
+  border-top-color: var(--pink);
+  content: "";
+  height: 28px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 28px;
+  z-index: 3;
+}
+@keyframes film-loader-spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
 .film-card:hover video {
   filter: saturate(1.25);
   opacity: 1;
   transform: scale(1.04);
+}
+.film-card.is-loading:hover video {
+  filter: blur(16px) saturate(0.7);
+  opacity: 0.52;
+  transform: scale(1.06);
 }
 .film-card:after {
   background: linear-gradient(
@@ -740,6 +806,14 @@ h2 em {
   transition: opacity 0.35s;
   z-index: 20;
 }
+.video-modal::before {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+  content: "";
+  inset: 0;
+  opacity: 0.08;
+  pointer-events: none;
+  position: absolute;
+}
 .video-modal.is-open {
   opacity: 1;
   pointer-events: auto;
@@ -765,6 +839,7 @@ h2 em {
   background: #05050a;
   max-width: 540px;
   position: relative;
+  transform-origin: center center;
   width: min(82vw, 540px, calc((100vh - 115px) * 0.5625));
 }
 .modal-video-wrap {
@@ -782,6 +857,21 @@ h2 em {
   max-width: 100%;
   object-fit: contain;
   width: auto;
+}
+.modal-progress {
+  background: rgba(243, 240, 250, 0.18);
+  height: 2px;
+  overflow: hidden;
+  position: relative;
+}
+.modal-progress span {
+  background: var(--pink);
+  display: block;
+  height: 100%;
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform 0.15s linear;
+  width: 100%;
 }
 .modal-meta {
   align-items: baseline;
@@ -960,6 +1050,9 @@ h2 em {
   .marquee-track {
     animation: none;
   }
+  .site-noise {
+    animation: none;
+  }
   .section-reveal,
   .section-reveal.is-visible {
     filter: none;
@@ -967,6 +1060,12 @@ h2 em {
     transition: opacity 0.3s;
   }
   .film-card video {
+    transition: none;
+  }
+  .film-card,
+  .film-card.is-in-view {
+    opacity: 1;
+    transform: none;
     transition: none;
   }
 }
